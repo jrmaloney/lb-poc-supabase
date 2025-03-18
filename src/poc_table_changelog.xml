@@ -1,0 +1,27 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+
+<changeSet id="add_table_index" author="jmaloney">
+    <createTable schemaName="public" tableName="test">
+        <column name="id" type="int" autoIncrement="true">
+            <constraints primaryKey="true"  nullable="false"/>
+        </column>
+        <column name="test_code" type="varchar(40)">
+            <constraints nullable="false"/>
+        </column>
+        <column name="test_name" type="varchar(60)">
+            <constraints nullable="false"/>
+        </column>
+        <column name="sort" type="int">
+        <constraints nullable="false"/>
+        </column>
+    </createTable>
+</changeSet>
+<changeSet id="2" author="jmaloney">
+        <sql>
+            -- Enable RLS
+            ALTER TABLE test ENABLE ROW LEVEL SECURITY;
+        </sql>
+    </changeSet>
+</databaseChangeLog>
